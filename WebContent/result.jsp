@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@page import="com.eduardo.flightSearch.beans.ResultFlight"%>
+	<%@page import="com.eduardo.flightsearch.beans.ResultFlight" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +27,6 @@
 	<%		
 		}
 	%>
-	<a href="/flightSearch">Back to index</a>
+	<a href="/flightsearch">Back to index</a>
 </body>
 </html>

@@ -9,6 +9,6 @@
 <body>
 	<h1>Error</h1>
 	<p>There was an error creating your request, we're sorry. Please try again.</p>
-	<a href="/flightSearch">Back to index</a>
+	<a href="/flightsearch">Back to index</a>
 </body>
 </html>
