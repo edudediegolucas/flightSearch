@@ -1,18 +1,34 @@
 # flightsearch
-Let's search for flights!
 
-This is a public Git repository to maintain a web project whose main objective is create a flight search engine.
-Project built with Maven on Java 8 and uses Apache Tomcat 9 as server (you can run it on any server you want).
+*Let's search for flights!*
 
-Compile the project with
+Git repository to maintain a project whose main objective is creating a flight search engine. Project built with Maven
+on Java ~~8~~ 11 and uses ~~Apache Tomcat 9 as server (you can run it on any server you want)~~ SpringBoot technology to
+run.
 
-    mvn clean install
+## Before anything...
 
-Once the war is created (find it in _target_ folder), deploy it into the Tomcat server.
-Access the index webpage  in
+Check if you have installed these features in your machine:
 
-    localhost:8080/flightsearch
+* **JDK 11**,
+* **Maven 3.6.x**,
 
-Created by Eduardo de Diego Lucas.
+## Build
 
-For more info, please visit eduardodediegolucas.es
+You can build this project using
+
+```mvn clean install -U```
+
+## Run it!
+
+You can run the Spring Boot application via:
+
+```mvn spring-boot:run```
+
+or from your favourite IDE launch the main class
+
+```FlightSearchApp.java```
+
+Test the endpoints via curl, web browser or Postman (example):
+
+``` curl localhost:8080/flightsearch/api/v1/getallflights```
