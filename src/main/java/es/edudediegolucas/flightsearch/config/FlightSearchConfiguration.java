@@ -1,8 +1,8 @@
-package com.eduardo.flightsearch.config;
+package es.edudediegolucas.flightsearch.config;
 
-import com.eduardo.flightsearch.services.CalculateFlight;
-import com.eduardo.flightsearch.services.ReadAndParseFile;
-import com.eduardo.flightsearch.services.SearchFlight;
+import es.edudediegolucas.flightsearch.services.CalculateFlight;
+import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
+import es.edudediegolucas.flightsearch.services.SearchFlight;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

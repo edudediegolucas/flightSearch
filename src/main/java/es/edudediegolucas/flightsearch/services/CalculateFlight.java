@@ -1,6 +1,6 @@
-package com.eduardo.flightsearch.services;
+package es.edudediegolucas.flightsearch.services;
 
-import com.eduardo.flightsearch.enums.Airline;
+import es.edudediegolucas.flightsearch.enums.Airline;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

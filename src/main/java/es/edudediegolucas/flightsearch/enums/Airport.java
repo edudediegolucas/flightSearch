@@ -1,4 +1,4 @@
-package com.eduardo.flightsearch.enums;
+package es.edudediegolucas.flightsearch.enums;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

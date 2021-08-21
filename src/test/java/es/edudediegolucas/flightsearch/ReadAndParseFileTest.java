@@ -1,7 +1,7 @@
-package com.eduardo.flightsearch;
+package es.edudediegolucas.flightsearch;
 
-import com.eduardo.flightsearch.enums.Airport;
-import com.eduardo.flightsearch.services.ReadAndParseFile;
+import es.edudediegolucas.flightsearch.enums.Airport;
+import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,8 @@
-package com.eduardo.flightsearch;
+package es.edudediegolucas.flightsearch;
 
-import com.eduardo.flightsearch.enums.Airline;
-import com.eduardo.flightsearch.services.CalculateFlight;
-import com.eduardo.flightsearch.services.ReadAndParseFile;
+import es.edudediegolucas.flightsearch.enums.Airline;
+import es.edudediegolucas.flightsearch.services.CalculateFlight;
+import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

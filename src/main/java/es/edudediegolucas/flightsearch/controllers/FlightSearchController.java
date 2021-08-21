@@ -1,8 +1,8 @@
-package com.eduardo.flightsearch.controllers;
+package es.edudediegolucas.flightsearch.controllers;
 
-import com.eduardo.flightsearch.services.CalculateFlight;
-import com.eduardo.flightsearch.services.ReadAndParseFile;
-import com.eduardo.flightsearch.services.SearchFlight;
+import es.edudediegolucas.flightsearch.services.CalculateFlight;
+import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
+import es.edudediegolucas.flightsearch.services.SearchFlight;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
