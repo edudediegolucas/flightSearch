@@ -1,4 +1,4 @@
-package com.eduardo.flightsearch.services;
+package es.edudediegolucas.flightsearch.services;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

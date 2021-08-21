@@ -1,7 +1,7 @@
-package com.eduardo.flightsearch;
+package es.edudediegolucas.flightsearch;
 
-import com.eduardo.flightsearch.controllers.FlightSearchController;
-import com.eduardo.flightsearch.enums.Airport;
+import es.edudediegolucas.flightsearch.controllers.FlightSearchController;
+import es.edudediegolucas.flightsearch.enums.Airport;
 import com.google.gson.Gson;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

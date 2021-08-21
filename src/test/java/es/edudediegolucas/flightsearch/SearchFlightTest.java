@@ -1,7 +1,7 @@
-package com.eduardo.flightsearch;
+package es.edudediegolucas.flightsearch;
 
-import com.eduardo.flightsearch.services.ReadAndParseFile;
-import com.eduardo.flightsearch.services.SearchFlight;
+import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
+import es.edudediegolucas.flightsearch.services.SearchFlight;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Assertions;
