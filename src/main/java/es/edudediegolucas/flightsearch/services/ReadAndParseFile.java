@@ -1,13 +1,6 @@
 package es.edudediegolucas.flightsearch.services;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
-import lombok.ToString;
-
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -15,6 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.ToString;
 
 @RequiredArgsConstructor
 public class ReadAndParseFile {
@@ -31,11 +30,11 @@ public class ReadAndParseFile {
       linesCsvFile.forEach(line -> {
         String[] flightAttributes = line.split(",");
         var flight = Flight.builder()
-                .origin(flightAttributes[0])
-                .destination(flightAttributes[1])
-                .codeFlight(flightAttributes[2])
-                .price(flightAttributes[3])
-                .build();
+            .origin(flightAttributes[0])
+            .destination(flightAttributes[1])
+            .codeFlight(flightAttributes[2])
+            .price(flightAttributes[3])
+            .build();
         // does origin exist?
         var flightMapDestinations = Optional.ofNullable(flightsMap.get(flight.getOrigin()));
         if (flightMapDestinations.isPresent()) {
