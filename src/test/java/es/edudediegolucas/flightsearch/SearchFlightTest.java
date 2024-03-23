@@ -2,12 +2,6 @@ package es.edudediegolucas.flightsearch;
 
 import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
 import es.edudediegolucas.flightsearch.services.SearchFlight;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +9,11 @@ import java.util.NoSuchElementException;
 import java.util.TreeMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Slf4j
 class SearchFlightTest {
@@ -85,29 +84,29 @@ class SearchFlightTest {
 
   private void putRandomOriginDestinationToMapFlight() {
     IntStream.range(0, ThreadLocalRandom.current().nextInt(1, 10))
-            .forEach(ignored -> {
-              final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-              final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-              mapFlights.put(origin, createMapDestination(origin, destination));
-            });
+        .forEach(ignored -> {
+          final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+          final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+          mapFlights.put(origin, createMapDestination(origin, destination));
+        });
   }
 
   private Map<String, List<ReadAndParseFile.Flight>> createMapDestination(final String origin, final String destination) {
     final var mapDestination = new TreeMap<String, List<ReadAndParseFile.Flight>>();
     IntStream.range(0, ThreadLocalRandom.current().nextInt(1, 10))
-            .forEach(ignored -> mapDestination.put(destination, createListOfFlight(origin, destination)));
+        .forEach(ignored -> mapDestination.put(destination, createListOfFlight(origin, destination)));
     return mapDestination;
   }
 
   private List<ReadAndParseFile.Flight> createListOfFlight(final String origin, final String destination) {
     final var listFlight = new ArrayList<ReadAndParseFile.Flight>();
     IntStream.range(0, ThreadLocalRandom.current().nextInt(1, 10))
-            .forEach(ignored -> listFlight.add(ReadAndParseFile.Flight.builder()
-                    .codeFlight(RandomStringUtils.randomAlphanumeric(6).toUpperCase())
-                    .origin(origin)
-                    .destination(destination)
-                    .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
-                    .build()));
+        .forEach(ignored -> listFlight.add(ReadAndParseFile.Flight.builder()
+            .codeFlight(RandomStringUtils.randomAlphanumeric(6).toUpperCase())
+            .origin(origin)
+            .destination(destination)
+            .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
+            .build()));
     return listFlight;
   }
 }

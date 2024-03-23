@@ -3,6 +3,14 @@ package es.edudediegolucas.flightsearch.controllers;
 import es.edudediegolucas.flightsearch.services.CalculateFlight;
 import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
 import es.edudediegolucas.flightsearch.services.SearchFlight;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,15 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
 
 @Slf4j
 @AllArgsConstructor
@@ -47,11 +46,13 @@ public class FlightSearchController {
   }
 
   @GetMapping(value = "/getflights", produces = MediaType.APPLICATION_JSON_VALUE)
-  public List<ReadAndParseFile.Flight> getListOfFlights(@RequestParam String origin,
-                                                        @RequestParam String destination) {
+  public List<ReadAndParseFile.Flight> getListOfFlights(
+      @RequestParam String origin,
+      @RequestParam String destination) {
     log.info("called /getflights with [{}] - > [{}]", origin, destination);
     try {
-      return searchFlight.searchFlight(readAndParseFile.getFlightsMap(), StringUtils.trimToEmpty(origin), StringUtils.trimToEmpty(destination));
+      return searchFlight.searchFlight(readAndParseFile.getFlightsMap(), StringUtils.trimToEmpty(origin),
+          StringUtils.trimToEmpty(destination));
     } catch (NoSuchElementException noSuchElementException) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
@@ -61,13 +62,13 @@ public class FlightSearchController {
   public Set<CalculateFlight.FlightResult> calculateFlightsWithPrice(@RequestBody @Valid RequestFlightCriteria requestFlightCriteria) {
     log.info("called /flights with {}", requestFlightCriteria);
     return calculateFlight.calculatePriceForFlight(searchFlight.searchFlight(
-                    readAndParseFile.getFlightsMap(),
-                    StringUtils.trimToEmpty(requestFlightCriteria.getOrigin()),
-                    StringUtils.trimToEmpty(requestFlightCriteria.getDestination())),
-            requestFlightCriteria.getDays(),
-            requestFlightCriteria.getAdults(),
-            requestFlightCriteria.getChildren(),
-            requestFlightCriteria.getInfants());
+            readAndParseFile.getFlightsMap(),
+            StringUtils.trimToEmpty(requestFlightCriteria.getOrigin()),
+            StringUtils.trimToEmpty(requestFlightCriteria.getDestination())),
+        requestFlightCriteria.getDays(),
+        requestFlightCriteria.getAdults(),
+        requestFlightCriteria.getChildren(),
+        requestFlightCriteria.getInfants());
   }
 
   @Builder

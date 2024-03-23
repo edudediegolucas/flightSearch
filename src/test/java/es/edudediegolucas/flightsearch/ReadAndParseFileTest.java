@@ -2,11 +2,10 @@ package es.edudediegolucas.flightsearch;
 
 import es.edudediegolucas.flightsearch.enums.Airport;
 import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class ReadAndParseFileTest {
 

@@ -3,16 +3,15 @@ package es.edudediegolucas.flightsearch;
 import es.edudediegolucas.flightsearch.enums.Airline;
 import es.edudediegolucas.flightsearch.services.CalculateFlight;
 import es.edudediegolucas.flightsearch.services.ReadAndParseFile;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class CalculateFlightTest {
 
@@ -165,11 +164,11 @@ class CalculateFlightTest {
   private void addExistingAirLine(Airline airline) {
     flightList = new ArrayList<>();
     flightList.add(ReadAndParseFile.Flight.builder()
-            .codeFlight(airline.getCode())
-            .origin(RandomStringUtils.randomAlphabetic(3).toUpperCase())
-            .destination(RandomStringUtils.randomAlphabetic(3).toUpperCase())
-            .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
-            .build());
+        .codeFlight(airline.getCode())
+        .origin(RandomStringUtils.randomAlphabetic(3).toUpperCase())
+        .destination(RandomStringUtils.randomAlphabetic(3).toUpperCase())
+        .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
+        .build());
   }
 
   private List<ReadAndParseFile.Flight> createListFlights() {
@@ -177,12 +176,12 @@ class CalculateFlightTest {
     final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
     final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
     IntStream.range(0, ThreadLocalRandom.current().nextInt(1, 10))
-            .forEach(ignored -> flightList.add(ReadAndParseFile.Flight.builder()
-                    .codeFlight(RandomStringUtils.randomAlphanumeric(6).toUpperCase())
-                    .origin(origin)
-                    .destination(destination)
-                    .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
-                    .build()));
+        .forEach(ignored -> flightList.add(ReadAndParseFile.Flight.builder()
+            .codeFlight(RandomStringUtils.randomAlphanumeric(6).toUpperCase())
+            .origin(origin)
+            .destination(destination)
+            .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
+            .build()));
     return flightList;
   }
 }
