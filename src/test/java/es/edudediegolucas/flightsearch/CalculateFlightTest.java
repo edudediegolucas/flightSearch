@@ -165,19 +165,19 @@ class CalculateFlightTest {
     flightList = new ArrayList<>();
     flightList.add(ReadAndParseFile.Flight.builder()
         .codeFlight(airline.getCode())
-        .origin(RandomStringUtils.randomAlphabetic(3).toUpperCase())
-        .destination(RandomStringUtils.randomAlphabetic(3).toUpperCase())
+        .origin(RandomStringUtils.secure().nextAlphabetic(3).toUpperCase())
+        .destination(RandomStringUtils.secure().nextAlphabetic(3).toUpperCase())
         .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
         .build());
   }
 
   private List<ReadAndParseFile.Flight> createListFlights() {
     flightList = new ArrayList<>();
-    final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-    final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+    final String origin = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+    final String destination = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
     IntStream.range(0, ThreadLocalRandom.current().nextInt(1, 10))
         .forEach(ignored -> flightList.add(ReadAndParseFile.Flight.builder()
-            .codeFlight(RandomStringUtils.randomAlphanumeric(6).toUpperCase())
+            .codeFlight(RandomStringUtils.secure().nextAlphabetic(6).toUpperCase())
             .origin(origin)
             .destination(destination)
             .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))

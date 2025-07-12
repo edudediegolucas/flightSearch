@@ -29,8 +29,8 @@ class SearchFlightTest {
 
   @Test
   void testSearchFlight() {
-    final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-    final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+    final String origin = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+    final String destination = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
     putOriginDestinationToMapFlight(origin, destination);
     putRandomOriginDestinationToMapFlight();
     var flights = searchFlight.searchFlight(mapFlights, origin, destination);
@@ -41,39 +41,39 @@ class SearchFlightTest {
 
   @Test
   void testSearchFlightNullMap() {
-    final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-    final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+    final String origin = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+    final String destination = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
     Assertions.assertThrows(NullPointerException.class, () -> searchFlight.searchFlight(null, origin, destination));
   }
 
   @Test
   void testSearchFlightEmptyOrigin() {
-    final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+    final String destination = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
     putRandomOriginDestinationToMapFlight();
     Assertions.assertThrows(NullPointerException.class, () -> searchFlight.searchFlight(mapFlights, null, destination));
   }
 
   @Test
   void testSearchFlightEmptyDestination() {
-    final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-    putOriginDestinationToMapFlight(origin, RandomStringUtils.randomAlphabetic(3).toUpperCase());
+    final String origin = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+    putOriginDestinationToMapFlight(origin, RandomStringUtils.secure().nextAlphabetic(3).toUpperCase());
     putRandomOriginDestinationToMapFlight();
     Assertions.assertThrows(NullPointerException.class, () -> searchFlight.searchFlight(mapFlights, origin, null));
   }
 
   @Test
   void testSearchFlightNotFoundOrigin() {
-    final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-    final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+    final String origin = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+    final String destination = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
     putRandomOriginDestinationToMapFlight();
     Assertions.assertThrows(NoSuchElementException.class, () -> searchFlight.searchFlight(mapFlights, origin, destination));
   }
 
   @Test
   void testSearchFlightNotFoundDestination() {
-    final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-    final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-    putOriginDestinationToMapFlight(origin, RandomStringUtils.randomAlphabetic(3).toUpperCase());
+    final String origin = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+    final String destination = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+    putOriginDestinationToMapFlight(origin, RandomStringUtils.secure().nextAlphabetic(3).toUpperCase());
     putRandomOriginDestinationToMapFlight();
     Assertions.assertThrows(NoSuchElementException.class, () -> searchFlight.searchFlight(mapFlights, origin, destination));
   }
@@ -85,8 +85,8 @@ class SearchFlightTest {
   private void putRandomOriginDestinationToMapFlight() {
     IntStream.range(0, ThreadLocalRandom.current().nextInt(1, 10))
         .forEach(ignored -> {
-          final String origin = RandomStringUtils.randomAlphabetic(3).toUpperCase();
-          final String destination = RandomStringUtils.randomAlphabetic(3).toUpperCase();
+          final String origin = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
+          final String destination = RandomStringUtils.secure().nextAlphabetic(3).toUpperCase();
           mapFlights.put(origin, createMapDestination(origin, destination));
         });
   }
@@ -102,7 +102,7 @@ class SearchFlightTest {
     final var listFlight = new ArrayList<ReadAndParseFile.Flight>();
     IntStream.range(0, ThreadLocalRandom.current().nextInt(1, 10))
         .forEach(ignored -> listFlight.add(ReadAndParseFile.Flight.builder()
-            .codeFlight(RandomStringUtils.randomAlphanumeric(6).toUpperCase())
+            .codeFlight(RandomStringUtils.secure().nextAlphabetic(6).toUpperCase())
             .origin(origin)
             .destination(destination)
             .price(String.format("%.2f", ThreadLocalRandom.current().nextDouble(1.0, 1000.0)).concat(" €"))
